@@ -48,16 +48,16 @@
      * @param {number} row
      */
     function visitIsland(map, visited, col, row) {
-        var neighbour;
+        var cell;
         var dfsStack = [{ col, row }];
         visited[col][row] = true;
         while (dfsStack.length > 0) {
-            neighbour = getNextUnvisitedNeighbour(map, visited, dfsStack[dfsStack.length - 1]);
-            if (neighbour !== null) {
-                visited[neighbour.col][neighbour.row] = true;
-                dfsStack.push(neighbour);
+            cell = getNextUnvisitedNeighbour(map, visited, dfsStack[dfsStack.length - 1]);
+            if (cell !== null) {
+                visited[cell.col][cell.row] = true;
+                dfsStack.push(cell);
             } else {
-                neighbour = dfsStack.pop();
+                cell = dfsStack.pop();
             }
         }
     }
@@ -88,4 +88,7 @@
     }
 
     root.SHRI_ISLANDS.solution = solution;
+
+    root.SHRI_ISLANDS.generateVisitedMap = generateVisitedMap;
+    root.SHRI_ISLANDS.getNextUnvisitedNeighbour = getNextUnvisitedNeighbour;
 })(this);
